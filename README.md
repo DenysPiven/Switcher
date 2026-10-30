@@ -77,3 +77,7 @@ swift run -c release Switcher --test
 - `Sources/Switcher/Layouts.swift`: розкладки, таблиці клавіша → символ, перемикання.
 - `Sources/Switcher/Detector.swift`: рішення, чи виправляти слово.
 - `Sources/Switcher/main.swift`: запуск, дозволи, автозапуск.
+
+## Ліцензія
+
+MIT, див. [LICENSE](LICENSE).
