@@ -1,0 +1,43 @@
+name: Release
+
+# Push a tag like v1.2.3 to build Switcher.zip and publish a GitHub release.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: VERSION="${GITHUB_REF_NAME#v}" ./build.sh
+
+      - name: Package
+        run: |
+          ditto -c -k --keepParent build/Switcher.app build/Switcher.zip
+          echo "SHA256=$(shasum -a 256 build/Switcher.zip | cut -d' ' -f1)" >> "$GITHUB_ENV"
+
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat > notes.md <<EOF
+          ## Install
+
+          \`\`\`bash
+          brew install --cask denyspiven/tap/switcher
+          \`\`\`
+
+          Or download **Switcher.zip**, unzip it, move **Switcher.app** to Applications and open it.
+          The app is not notarized by Apple, so the first launch needs one extra step, see
+          [README](https://github.com/DenysPiven/Switcher#install).
+
+          SHA-256 of Switcher.zip: \`${SHA256}\`
+          EOF
+          gh release create "$GITHUB_REF_NAME" build/Switcher.zip \
+            --title "Switcher $GITHUB_REF_NAME" --notes-file notes.md --generate-notes
