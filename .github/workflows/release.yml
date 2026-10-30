@@ -29,11 +29,7 @@ jobs:
           cat > notes.md <<EOF
           ## Install
 
-          \`\`\`bash
-          brew install --cask denyspiven/tap/switcher
-          \`\`\`
-
-          Or download **Switcher.zip**, unzip it, move **Switcher.app** to Applications and open it.
+          Download **Switcher.zip**, unzip it, move **Switcher.app** to Applications and open it.
           The app is not notarized by Apple, so the first launch needs one extra step, see
           [README](https://github.com/DenysPiven/Switcher#install).
 

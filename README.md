@@ -13,12 +13,6 @@ It has no Dock icon, no menu bar icon and no windows.
 
 ## Install
 
-### Homebrew
-
-```bash
-brew install --cask denyspiven/tap/switcher
-```
-
 ### Download
 
 1. Download **Switcher.zip** from the [latest release](https://github.com/DenysPiven/Switcher/releases/latest).
@@ -95,7 +89,7 @@ Start:
 open -a Switcher
 ```
 
-Uninstall (Homebrew users: `brew uninstall --cask switcher`):
+Uninstall:
 
 ```bash
 ./uninstall.sh
@@ -129,8 +123,7 @@ swift run -c release Switcher --test
 
 ## Releasing
 
-1. `git tag v1.2.3 && git push origin v1.2.3`: GitHub Actions builds `Switcher.zip` and publishes the release.
-2. `scripts/update_cask.sh 1.2.3`: points the Homebrew cask at the new release.
+`git tag v1.2.3 && git push origin v1.2.3`: GitHub Actions builds `Switcher.zip` and publishes the release.
 
 ## License
 
