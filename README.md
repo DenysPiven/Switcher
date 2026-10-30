@@ -3,6 +3,8 @@
 An invisible automatic keyboard layout switcher for macOS, similar to Punto Switcher.
 It has no Dock icon, no menu bar icon and no windows.
 
+![Switcher demo](docs/demo.gif)
+
 ## Features
 
 - **Auto-correction**: type `ghbdsn` and press space, and you get `привіт ` with the layout switched to Ukrainian.
@@ -83,6 +85,7 @@ swift run -c release Switcher --test
 - `Sources/Switcher/Layouts.swift`: layouts, key → character tables, switching.
 - `Sources/Switcher/Detector.swift`: decides whether to correct a word.
 - `Sources/Switcher/main.swift`: startup, permissions, login item.
+- `scripts/make_demo_gif.py`: renders `docs/demo.gif` (needs Pillow).
 
 ## License
 
